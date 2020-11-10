@@ -4,7 +4,7 @@
 /****************************************/
 
 body          { background-color: black; color: white; }
-a { color: white; font-family: 'PRESS START 2P'}
+a { color: white;}
 #stats        { border: 2px solid lime; }
 #controls     { width: 28em; float: left; padding: 1em; font-size: 0.7em; }
 #controls th  { text-align: right; vertical-align: middle; }
