@@ -8,12 +8,46 @@ a {
 	color: white;
 	font-family:'Press Start 2P'; 
 	text-shadow: 0 0 20px #f700ff;
+	position: absolute;
+  top:0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0 20px;
+  font-size: 5em;
+  color: #fff;
 }
 a:hover
 {
   color: #ae00b4;
   background-color: #f700ff;
   box-shadow:  0 0 10px #fc1f4f, 0 0 400px #fc1f4f, 0 0 80px #fc1f4f;
+}
+.a:after
+{
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right:0;
+  padding: 0 20px;
+  z-index: -1;
+  color: #f32172;
+  filter: blur(30px);
+}
+.neon:before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #ff0037;
+  z-index: -2;
+  opacity: .5;
+  filter: blur(30px);
 }
 #stats        { border: 2px solid lime; }
 #controls     { width: 28em; float: left; padding: 1em; font-size: 0.7em; }
