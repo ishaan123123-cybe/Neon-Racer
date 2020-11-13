@@ -222,12 +222,12 @@ function racer(gamemode) {
             // Increase level (only useful for display, internally we use difficultyCurrent)
             currentLevel += 1;
             // Give the player some more time
-           /* var remainingTimePast = remainingTime;
+            var remainingTimePast = remainingTime;
             remainingTime += trackLength * remainingTimeIncrease;
             if ((remainingTimePast < remainingTimeThreshold) & (remainingTime > remainingTimeThreshold)) {
                 Dom.removeClassName('remaining_time_value', 'warninglow'); // remove any warning if there was one
                 Dom.addClassName('remaining_time_value', 'value');
-            }*/
+            }
             // Increase current difficulty unless we are already at the max
             if (difficultyCurrent < difficultyMax) {
                 difficultyCurrent += difficultyIncrement;
@@ -256,7 +256,7 @@ function racer(gamemode) {
           } else { // fastest lap time gamemode
               lastLapTime    = currentLapTime;
               currentLapTime = 0;
-      /*        if ((lastLapTime <= Util.toFloat(Dom.storage.fast_lap_time)) | (Util.toFloat(Dom.storage.fast_lap_time) == 0)) {
+             if ((lastLapTime <= Util.toFloat(Dom.storage.fast_lap_time)) | (Util.toFloat(Dom.storage.fast_lap_time) == 0)) {
                 Dom.storage.fast_lap_time = lastLapTime;
                 updateHud('fast_lap_time', formatTime(lastLapTime));
                 Dom.addClassName('fast_lap_time', 'fastest');
@@ -278,7 +278,7 @@ function racer(gamemode) {
             if (currentLevel == 0) { // first level, we give some time to the player
                 remainingTime += trackLength * remainingTimeIncrease * remainingTimeStartBonus;
             }
-          }*/
+          }
 
           // Highlight remaining time if quite low
           if ((gamemode == 1) & (remainingTime < remainingTimeThreshold)) {
