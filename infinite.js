@@ -51,9 +51,9 @@ function racer(gamemode) {
     // Gamemode 1: out of time
     var remainingTime = 0;                         // internal variable - remaining time left to pass the next finish line or it's game over, will be calculated automatically
     var difficultyStart = 4;                         // Starting difficulty (track length)
-    var difficultyIncrement = 0.5;                // How much to increment the difficulty (and track length) each time player finish a track?
+    var difficultyIncrement = 0;                // How much to increment the difficulty (and track length) each time player finish a track?
     var difficultyGap = 2.0;                          // After how many track finishes do we start to increase the difficulty in terms of number of cars on road, number of turns, etc
-    var difficultyMax = 14;                      // Maximum difficulty, after this there will be no increase in difficulty
+    var difficultyMax = 4;                      // Maximum difficulty, after this there will be no increase in difficulty
     var difficultyCurrent = difficultyStart;    // Current difficulty (will be modified ingame)
     var remainingTimeIncrease = 5000;                      // Multiplier of the trackLength to get seconds that will be added to the remainingTime, in other words this defines the time left to the player to finish the track proportionally to the track length (a higher value makes the game easier)
    /* var remainingTimeIncrease = remainingTimeIncrease +1;                      // make time infinite*/
@@ -65,7 +65,7 @@ function racer(gamemode) {
     var changeBackgroundCurrentAlpha = 0.0;          // internal variable from 0.0 to 1.0 to specify the current state of background switching (via progressing blending animation)
     var currentBackground = 0;                      // internal variable to track which background we currently draw
     var changeBackgroundFlag = false;           // internal variable to start the background change
-    var turboLeft = 3;                                      // number of turbos left
+    var turboLeft = 16;                                      // number of turbos left
     var turboDuration = 10.0;                            // duration of turbo in seconds
     var turboAnimation = 2.0;                           // duration of animation to do progressive increase/decrease of fov
     var turboFovIncrement = 1.4;                        // multiplier of fov during turbo
