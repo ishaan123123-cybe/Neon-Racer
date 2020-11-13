@@ -233,7 +233,7 @@ function racer(gamemode) {
             }
             // Increase current difficulty unless we are already at the max
             if (difficultyCurrent < difficultyMax) {
-                difficultyCurrent += 0;
+                difficultyCurrent += difficultyIncrement;
             }
             if (randomTrack) { // generate procedurally a new track when arriving at the finish line according to difficulty
                 // Generate a new track length according to difficulty
@@ -243,7 +243,7 @@ function racer(gamemode) {
                 // If we crossed the difficulty gap (ie, every few levels), then we increase the number of cars
                 if (((difficultyCurrent % difficultyGap) == 0) & (difficultyCurrent < difficultyMax)) {
                     // Double the number of cars (keep in mind the track extended and we kept the same number of cars, so it's not too much to double)
-                    totalCars += 0;
+                    totalCars += Math.floor(totalCars);
                     // And we redraw all cars TODO: make it look better (cars on screen at finish line will disappear)
                     resetCars();
                 }
