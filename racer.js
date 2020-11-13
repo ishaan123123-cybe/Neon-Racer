@@ -1,5 +1,5 @@
 function racer(gamemode) {
-    var fps            = 80;                      // how many 'update' frames per second
+    var fps            = 120;                      // how many 'update' frames per second
     var step           = 1/fps;                   // how long is each frame (in seconds)
     var width          = 1024;                    // logical canvas width
     var height         = 768;                     // logical canvas height
@@ -68,7 +68,7 @@ function racer(gamemode) {
     var turboDuration = 10.0;                            // duration of turbo in seconds
     var turboAnimation = 2.0;                           // duration of animation to do progressive increase/decrease of fov
     var turboFovIncrement = 1.4;                        // multiplier of fov during turbo
-    var turboMaxSpeed = maxSpeed * 2;         // maximum speed under turbo
+    var turboMaxSpeed = maxSpeed * 1.5;         // maximum speed under turbo
     var turboGiveEvery = changeBackgroundEvery;     // give a new turbo every x levels (set to 0 to disable)
     var turboCentrifugal = centrifugal/2;                         // torque when under turbo (else the player cannot turn in curves)
     var turboTriggered = false;                         // internal variable - turbo triggered by player?
