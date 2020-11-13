@@ -50,7 +50,10 @@ function racer(gamemode) {
 
     // Gamemode 1: out of time
     var remainingTime = 0;                         // internal variable - remaining time left to pass the next finish line or it's game over, will be calculated automatically
-    var difficultyStart = 4;                         // Starting difficulty (track length)
+    var 
+    
+    
+    Start = 4;                         // Starting difficulty (track length)
     var difficultyIncrement = 0;                // How much to increment the difficulty (and track length) each time player finish a track?
     var difficultyGap = 2.0;                          // After how many track finishes do we start to increase the difficulty in terms of number of cars on road, number of turns, etc
     var difficultyMax = 4;                      // Maximum difficulty, after this there will be no increase in difficulty
@@ -230,7 +233,7 @@ function racer(gamemode) {
             }
             // Increase current difficulty unless we are already at the max
             if (difficultyCurrent < difficultyMax) {
-                difficultyCurrent += difficultyIncrement;
+                difficultyCurrent += 0;
             }
             if (randomTrack) { // generate procedurally a new track when arriving at the finish line according to difficulty
                 // Generate a new track length according to difficulty
@@ -240,7 +243,7 @@ function racer(gamemode) {
                 // If we crossed the difficulty gap (ie, every few levels), then we increase the number of cars
                 if (((difficultyCurrent % difficultyGap) == 0) & (difficultyCurrent < difficultyMax)) {
                     // Double the number of cars (keep in mind the track extended and we kept the same number of cars, so it's not too much to double)
-                    totalCars += Math.floor(totalCars);
+                    totalCars += 0;
                     // And we redraw all cars TODO: make it look better (cars on screen at finish line will disappear)
                     resetCars();
                 }
