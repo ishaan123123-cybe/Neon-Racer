@@ -50,13 +50,10 @@ function racer(gamemode) {
 
     // Gamemode 1: out of time
     var remainingTime = 0;                         // internal variable - remaining time left to pass the next finish line or it's game over, will be calculated automatically
-    var 
-    
-    
-    Start = 4;                         // Starting difficulty (track length)
-    var difficultyIncrement = 0;                // How much to increment the difficulty (and track length) each time player finish a track?
+    var difficultyStart = 4;                         // Starting difficulty (track length)
+    var difficultyIncrement = 0.5;                // How much to increment the difficulty (and track length) each time player finish a track?
     var difficultyGap = 2.0;                          // After how many track finishes do we start to increase the difficulty in terms of number of cars on road, number of turns, etc
-    var difficultyMax = 4;                      // Maximum difficulty, after this there will be no increase in difficulty
+    var difficultyMax = 14;                      // Maximum difficulty, after this there will be no increase in difficulty
     var difficultyCurrent = difficultyStart;    // Current difficulty (will be modified ingame)
     var remainingTimeIncrease = 5000;                      // Multiplier of the trackLength to get seconds that will be added to the remainingTime, in other words this defines the time left to the player to finish the track proportionally to the track length (a higher value makes the game easier)
    /* var remainingTimeIncrease = remainingTimeIncrease +1;                      // make time infinite*/
@@ -243,7 +240,7 @@ function racer(gamemode) {
                 // If we crossed the difficulty gap (ie, every few levels), then we increase the number of cars
                 if (((difficultyCurrent % difficultyGap) == 0) & (difficultyCurrent < difficultyMax)) {
                     // Double the number of cars (keep in mind the track extended and we kept the same number of cars, so it's not too much to double)
-                    totalCars += Math.floor(totalCars);
+                    totalCars = 20;
                     // And we redraw all cars TODO: make it look better (cars on screen at finish line will disappear)
                     resetCars();
                 }
