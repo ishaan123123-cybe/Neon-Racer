@@ -55,7 +55,7 @@ function racer(gamemode) {
     var difficultyGap = 2.0;                          // After how many track finishes do we start to increase the difficulty in terms of number of cars on road, number of turns, etc
     var difficultyMax = 14;                      // Maximum difficulty, after this there will be no increase in difficulty
     var difficultyCurrent = difficultyStart;    // Current difficulty (will be modified ingame)
-    var remainingTimeIncrease = 0.00009;                      // Multiplier of the trackLength to get seconds that will be added to the remainingTime, in other words this defines the time left to the player to finish the track proportionally to the track length (a higher value makes the game easier)
+    var remainingTimeIncrease = 0.0000/*9*/;                      // Multiplier of the trackLength to get seconds that will be added to the remainingTime, in other words this defines the time left to the player to finish the track proportionally to the track length (a higher value makes the game easier)
     var remainingTimeStartBonus = 2.0;                      // Multiplier of the remaining time given for the first level (to make game easier for newscomers), also because the player has no momentum at the beginning
     var remainingTimeThreshold = 20;      // When only this amount of time is left, the remaining time HUD will be highlighted (set to 0 to disable)
     var currentLevel = 0;                           // Internal variable, just a value to display the current level
