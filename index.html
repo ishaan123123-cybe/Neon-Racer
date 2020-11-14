@@ -406,10 +406,7 @@ footer{
         animation: cursorAnim3 .5s forwards;
         border: 1px solid cyan;
       }
-  .afterexpand {
-        animation: cursorAnim3 .5s forwards;
-        border: 8px solid cyan;
-      }
+  
   #o {
     
   }
@@ -427,7 +424,6 @@ footer{
   <div class="cursor"></div>
       <script src="sparkle.min.js"></script>
   <script>
-    const aftercursor = document.queryselector('.cursor:after')
     const cursor = document.querySelector('.cursor');
 
     document.addEventListener('mousemove', e => {
@@ -441,17 +437,7 @@ footer{
         cursor.classList.remove("expand");
       }, 500)
     })
-     document.addEventListener('mousemove', e => {
-      aftercursor.setAttribute("style", "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;")
-    })
-
-    document.addEventListener('click', () => {
-      aftercursor.classList.add("expand");
-
-      setTimeout(() => {
-        aftercursor.classList.remove("expand");
-      }, 500)
-    })
+    
 
   </script>
   <center>
