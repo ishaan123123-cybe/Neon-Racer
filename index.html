@@ -353,6 +353,7 @@ footer{
         transition-timing-function: ease-out;
         /*animation: cursorAnim .5s infinite alternate;*/
         pointer-events: none;
+      z-index: 2;
       }
 
       .cursor::after {
@@ -378,13 +379,17 @@ footer{
       }
 
       @keyframes cursorAnim2 {
-        from {
+        0% {
           transform: scale(1);
         }
 
-        to {
+        50% {
           transform: scale(.4);
-          color: cyan;
+          border-color: solid cyan;
+        }
+        100% {
+         transform: scale(1);
+          border-color: solid purple;
         }
       }
 
