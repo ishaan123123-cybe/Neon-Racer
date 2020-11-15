@@ -19,44 +19,24 @@
     document.onkeydown = function(event) {
         switch (event.keyCode) {
            case 38:
-            playtwo();
-play();
-                  document.getElementById('stop').pause();
+           /* document.getElementById('start').play();*/
+document.getElementById('go').play();
+                 /* document.getElementById('stop').pause();*/
 
         }
     };
      document.onkeyup = function(event) {
         switch (event.keyCode) {
            case 38:
-document.getElementById('go').pause();
-            document.getElementById('start').pause();
+             pause();
+           /* document.getElementById('start').pause();*/
 
-playthree();
+                  document.getElementById('stop').play();
         }
     };
-    function play() {
+    function pause() {
     var audio = document.getElementById('go');
-    if (audio.paused) {
-        audio.play();
-    }else{
-        audio.pause();
-        audio.currentTime = 0
-    }
-}
-    function playtwo() {
-    var audio = document.getElementById('start');
-    if (audio.paused) {
-        audio.play();
-    }else{
-        audio.pause();
-        audio.currentTime = 0
-    }
-}
-    function playthree() {
-    var audio = document.getElementById('stop');
-    if (audio.paused) {
-        audio.play();
-    }else{
+    
         audio.pause();
         audio.currentTime = 0
     }
