@@ -342,7 +342,9 @@ footer{
                color: purple; 
                margin-top: 2px; 
   }
-    .cursor {
+  /*##################################*/       
+  /* animation: cursorAnim .5s infinite alternate;*/
+   /* .cursor {
         width: 20px;
         height: 20px;
         border: 1px solid purple;
@@ -350,11 +352,12 @@ footer{
         position: absolute;
         transition-duration: 200ms;
         transition-timing-function: ease-out;
-        /*animation: cursorAnim .5s infinite alternate;*/
         pointer-events: none;
       }
+  */
+  /*##################################*/
 
-      .cursor::after {
+      .cursor/*::after*/ {
         content: "";
         width: 20px;
         height: 20px;
@@ -364,7 +367,8 @@ footer{
         opacity: .5;
         top: -8px;
         left: -8px;
-        animation: cursorAnim2 .5s infinite alternate;
+        /*animation: cursorAnim2 .5s infinite alternate;*/
+        background-color: cyan;
       }
    @keyframes cursorAnim {
         from {
