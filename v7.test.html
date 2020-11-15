@@ -28,19 +28,12 @@ document.getElementById('go').play();
      document.onkeyup = function(event) {
         switch (event.keyCode) {
            case 38:
-             pause();
-           /* document.getElementById('start').pause();*/
-
+document.getElementById('go').pause();
+document.getElementById('go').currentTime = 0
                   document.getElementById('stop').play();
         }
     };
-    function pause() {
-    var audio = document.getElementById('go');
-    
-        audio.pause();
-        audio.currentTime = 0
-    }
-}
+
 </script>
  <center>
  |<a href='v1.straight.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">straight</a> |
