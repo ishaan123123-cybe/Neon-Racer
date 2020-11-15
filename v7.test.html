@@ -9,7 +9,13 @@
   <link href="infinitetest.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="icon" href="images/neonracericon.png"/>
-
+<link rel="stylesheet" href="gauge/css/vroom.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/plugins/CSSPlugin.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/easing/EasePack.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/TweenLite.min.js"></script>
+	<script type="text/javascript" src="gauge/js/vroom.js"></script>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 </head> 
 
 <body> 
@@ -89,7 +95,7 @@
 
   <div id="racer">
     <div id="hud">
-      <span id="speed"            class="hud"><span id="speed_value" class="speed">0</span> mph</span>
+      <span id="speed" class="hud"><span id="miles"><span id="speed_value" class="speed">0</span></span> mph</span>
       	    	<meter id="speed_value" min="0" max="360" class="speed"></meter>
       <span id="current_lap_time" class="hud">Time: <span id="current_lap_time_value" class="value">0.0</span></span> 
       <span id="turbo_left" class="hud">Turbo: <span id="turbo_left_value" class="value">0</span></span>       
@@ -98,6 +104,20 @@
       <span id="last_lap_time"    class="hud">Last Lap: <span id="last_lap_time_value" class="value">0.0</span></span>
       <span id="fast_lap_time"    class="hud">Fastest Lap: <span id="fast_lap_time_value" class="value">0.0</span></span>
     </div>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
     <canvas id="canvas">
       Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
     </canvas>
@@ -118,6 +138,21 @@
   <script>
     racer(1); // initiate the game
   </script>
+<div id="wrapper">
+	<div id="left">
+		<p id="errmsg"></p>
+	</div>
 
+	<div id="gauge">
+		<div id="circle"></div>
+		<div id="numbers"></div>
+		<div id="mi-km"></div>
+		<div id="needle"></div>
+
+
+		
+		
+	</div>
+</div>
 </body> 
 </html>
