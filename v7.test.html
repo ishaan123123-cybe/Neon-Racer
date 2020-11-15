@@ -2,13 +2,12 @@
 
 <html>
 <head>
-  <title>Neon Racer - v7 (Its A Test, Dummy!)</title>
+  <title>Neon Racer - v7 (It's a test, dummy!)</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <link href="infinite.css" rel="stylesheet" type="text/css" />
+  <link href="common.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="icon" href="images/neonracericon.png"/>
 <link href="speedometer/css/speedometer.css" rel="stylesheet" type="text/css" />
-
 </head> 
 
 <body> 
@@ -90,9 +89,9 @@
     <div id="hud">
       <span id="speed"            class="hud"><span id="speed_value" class="value">0</span> mph</span>
       <span id="current_lap_time" class="hud">Time: <span id="current_lap_time_value" class="value">0.0</span></span> 
-      <span id="turbo_left" class="hud">Turbo: <span id="turbo_left_value" class="value">0</span></span>       
-      <span id="current_level" class="hud" style="background-color: #ffffff00; color: #ffffff00; border-color: #fffff00;">Level: <span id="current_level_value" class="value" style="background-color: #ffffff00; color: #ffffff00; border-color: #fffff00;">0</span></span> 
-      <span id="remaining_time" class="hud" style="background-color: #ffffff00; color: #ffffff00; border-color: #fffff00;">Time: <span id="remaining_time_value" class="value" style="background-color: #ffffff00; color: #ffffff00; border-color: #fffff00;">0.0</span></span> 
+      <span id="current_level" class="hud">Level: <span id="current_level_value" class="value">0</span></span> 
+      <span id="turbo_left" class="hud">Turbo: <span id="turbo_left_value" class="value">0</span></span> 
+      <span id="remaining_time" class="hud">Time: <span id="remaining_time_value" class="value">0.0</span></span> 
       <span id="last_lap_time"    class="hud">Last Lap: <span id="last_lap_time_value" class="value">0.0</span></span>
       <span id="fast_lap_time"    class="hud">Fastest Lap: <span id="fast_lap_time_value" class="value">0.0</span></span>
     </div>
@@ -101,12 +100,14 @@
     </canvas>
     Loading...
   </div>
-  <script src="speedometer/js/jquery.js"></script>
+<div id="speedometer">
+	<script src="speedometer/js/jquery.js"></script>
 <script src="speedometer/js/speedometer.js"></script>
 <script type="text/javascript">
 	$("#speed").myfunc({divFact:10,eventListenerType:'keyup'});
 </script>
 
+	</div>
   <div id='gamepad'>
       <div id='gamepad-turbo' class='gamepad-button'><span>Turbo</span></div>
       <div id='gamepad-up' class='gamepad-button'><span>^</span></div>
@@ -117,7 +118,7 @@
 
   <script src="stats.js"></script>
   <script src="common.js"></script>
-  <script src="infinite.js"></script>
+  <script src="racer.js"></script>
   <script>
     racer(1); // initiate the game
   </script>
