@@ -1,4 +1,4 @@
-//**NOTE!!!!** The name of the car is a Lamborghini Aventador SVJ!!!!
+//**NOTE!!!!** The name of the car is a Modified Lamborghini Aventador SVJ!!!! Top Speed: 240 mph; 0-60 in 2.9 seconds,(as it says on the web) 
 function racer(gamemode) {
     var fps            = 120;                      // how many 'update' frames per second
     var step           = 1/fps;                   // how long is each frame (in seconds)
