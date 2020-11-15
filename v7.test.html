@@ -16,6 +16,10 @@
   <audio id="go" src="go.mp3" loop></audio>
   <audio id="stop" src="stop.mp3"></audio>
   <script type="text/javascript">
+    document.getElementById('go').volume = 0.2;
+    document.getElementById('stop').volume = 0.2;
+    document.getElementById('start').volume = 0.2;
+
     document.onkeydown = function(event) {
         switch (event.keyCode) {
            case 38:
