@@ -19,14 +19,6 @@
     document.getElementById('go').volume = 0.2;
     document.getElementById('stop').volume = 0.2;
     document.getElementById('start').volume = 0.2;
-var audio_file = new Audio('go.mp3')
-audio_file.addEventListener('timeupdate', function(){
-    var buffer = .1
-    if(this.currentTime > this.duration - buffer){
-        this.currentTime = 0
-        this.play()
-    }
-});
     document.onkeydown = function(event) {
         switch (event.keyCode) {
            case 38:
