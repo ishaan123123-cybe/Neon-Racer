@@ -16,7 +16,8 @@ Incrementally built up in 5 parts:
  * play the [curves demo](https://lrq3000.github.io/javascript-racer/v2.curves.html)
  * play the [hills demo](https://lrq3000.github.io/javascript-racer/v3.hills.html)
  * play the [final version - fastest lap game mode](https://lrq3000.github.io/javascript-racer/v4.final.html)
- * play the [final game - out of time game mode](https://lrq3000.github.io/javascript-racer/v5.game.html)
+ * play the [out of time game mode](https://lrq3000.github.io/javascript-racer/v5.game.html)
+ * play the [infinite- - free drive game mode] (https://stewpidtnlvr.github.io/javascript-racer/v6.infinite.html)
 
 With detailed descriptions of how each part works:
 
