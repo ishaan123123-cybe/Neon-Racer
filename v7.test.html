@@ -19,15 +19,17 @@
     document.onkeydown = function(event) {
         switch (event.keyCode) {
            case 38:
-document.getElementById('go').play()
+            document.getElementById('start').play();
+document.getElementById('go').play();
          
         }
     };
      document.onkeyup = function(event) {
         switch (event.keyCode) {
            case 38:
-document.getElementById('go').pause()
-         
+document.getElementById('go').pause();
+         document.getElementById('stop').play();
+
         }
     };
 </script>
