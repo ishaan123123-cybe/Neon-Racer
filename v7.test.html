@@ -12,6 +12,25 @@
 </head> 
 
 <body> 
+  <audio id="start" src="start.mp3"/>
+  <audio id="go" src="go.mp3" loop/>
+  <audio id="stop" src="stop.mp3"/>
+  <script type="text/javascript">
+    document.onkeydown = function(event) {
+        switch (event.keyCode) {
+           case 38:
+document.getElementById('go').play()
+         
+        }
+    };
+     document.onkeyup = function(event) {
+        switch (event.keyCode) {
+           case 38:
+document.getElementById('go').pause()
+         
+        }
+    };
+</script>
  <center>
  |<a href='v1.straight.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">straight</a> |
         <a href='v2.curves.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">curves</a>   |  
