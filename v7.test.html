@@ -8,6 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="icon" href="images/neonracericon.png"/>
 <link href="speedometer/css/speedometer.css" rel="stylesheet" type="text/css" />
+	<style>
+		#speedometer  {
+			border: 1px solid purple;
+			float: right;
+			display: block;
+		}
+		
+		
+	</style>
 </head> 
 
 <body> 
@@ -87,7 +96,9 @@
 
   <div id="racer">
     <div id="hud">
+	    <div id="myValues">
       <span id="speed"            class="hud"><span id="speed_value" class="value">0</span> mph</span>
+	    </div>
       <span id="current_lap_time" class="hud">Time: <span id="current_lap_time_value" class="value">0.0</span></span> 
       <span id="current_level" class="hud">Level: <span id="current_level_value" class="value">0</span></span> 
       <span id="turbo_left" class="hud">Turbo: <span id="turbo_left_value" class="value">0</span></span> 
@@ -104,7 +115,7 @@
 	<script src="speedometer/js/jquery.js"></script>
 <script src="speedometer/js/speedometer.js"></script>
 <script type="text/javascript">
-	$("#speed").myfunc({divFact:10,eventListenerType:'keyup'});
+	$("#myValues").myfunc({divFact:10,eventListenerType:'keyup'});
 </script>
 
 	</div>
