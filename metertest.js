@@ -82,7 +82,7 @@ function racer(gamemode) {
     var keySlower      = false;
 
     var hud = {
-      speed:            { value: null, dom: Dom.get('speed_value')            },
+      speed:            { value: null, dom: /*Dom.get('speed_value')*/document.getElementsByClassName("speed")           },
       current_lap_time: { value: null, dom: Dom.get('current_lap_time_value') },
       current_level: { value: null, dom: Dom.get('current_level_value') },
       turbo_left: { value: null, dom: Dom.get('turbo_left_value') },
