@@ -1,3 +1,4 @@
+//**NOTE!!!!** The name of the car is a Lamborghini Veneno!!!!
 function racer(gamemode) {
     var fps            = 120;                      // how many 'update' frames per second
     var step           = 1/fps;                   // how long is each frame (in seconds)
