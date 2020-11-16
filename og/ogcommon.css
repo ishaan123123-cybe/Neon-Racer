@@ -4,12 +4,16 @@
 /****************************************/
 
 body          { background-color: black; color: white; }
-/*a { 
+#atop { 
 	color: white;
 	font-family:'Press Start 2P'; 
 	text-shadow: 0 0 20px cyan;
   
-}*/
+}
+a{
+	color: white;
+	text-decoration: none;
+}
 a:hover
 {
   color: white;
