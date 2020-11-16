@@ -4,17 +4,17 @@
 /****************************************/
 
 body          { background-color: black; color: white; }
-a { 
+/*a { 
 	color: white;
 	font-family:'Press Start 2P'; 
-	text-shadow: 0 0 20px #f700ff;
+	text-shadow: 0 0 20px cyan;
   
-}
+}*/
 a:hover
 {
-  color: #ae00b4;
-  background-color: #f700ff;
-  box-shadow:  0 0 10px #fc1f4f, 0 0 400px #fc1f4f, 0 0 80px #fc1f4f;
+  color: white;
+  background-color: lightgreen;
+  box-shadow:  0 0 10px cyan, 0 0 400px cyan, 0 0 80px cyan;
 }
 
 #stats        { border: 2px solid lime; }
