@@ -1,18 +1,498 @@
+
 <!DOCTYPE html> 
 <html>
 <head>
-  <title>Javascript Racer</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Neon-Racer</title>
+  <meta charset="utf-8"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="icon" href="images/neonracericon.png"/>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+ /* display: flex;*/
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: black;
+  font-family: 'Press Start 2P', cursive;  
+  background-repeat: no-repeat;
+    background-size: cover;
+  /*cursor: none;*/
+}
+
+a
+{
+  position: static;
+  /*display: inline-block;*/
+  padding: 15px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  text-decoration: none;
+  font-size: 20px;
+  overflow: visible;
+  transition: 0.2s;
+  left: 0%;
+  display: block;
+  /*width: 96px;*/
+  float: center;
+  /*margin-left: /*35%*//*none;*/
+ /* margin-right: none;*/
+    top: 50px;
+margin-bottom: 15px;
+}
+a:hover
+{
+  color: solid blue;
+  background-color: #90EE90;
+  box-shadow:  0 0 10px cyan, 0 0 400px cyan, 0 0 80px cyan;
+  font-size: 22px;
+  /*cursor: none;*/
+}
+a2
+{
+  position: static;
+  /*display: inline-block;*/
+  padding: 15px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: visible;
+  transition: 0.2s;
+  right: 0%;
+  /*width: 96px;*/
+  float: right;
+  margin-right: 35%;
+margin-left: none;
+margin-top: 10%
+}
+a2:hover
+{
+  color: #ae00b4;
+  background: #f700ff;
+  box-shadow:  0 0 10px #fc1f4f, 0 0 400px #fc1f4f, 0 0 80px #fc1f4f
+}
+.neon
+{
+  position: absolute;
+  top: 185px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0 20px;
+  font-size: 5em;
+  color: #fff;
+  text-shadow: 0 0 20px #f700ff;
+  width: 100%; 
+}
+                                                                                                    
+.neon:after
+{
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right:0;
+  padding: 0 20px;
+  z-index: -1;
+  color: #f32172;
+  filter: blur(30px);
+}
+.neon:before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #ff0037;
+  z-index: -2;
+  opacity: .5;
+  filter: blur(30px);
+}
+.screen-wr A {
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid transparent;
+  -webkit-transition: border-color 150ms ease;
+  transition: border-color 150ms ease;
+  text-transform: uppercase;
+}
+
+.screen-wr A:hover { border-color: black; }
+
+.tv {
+  width: 100%;
+  height: 400px;
+  margin: 15px 0 0 0;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #231f20;
+  -webkit-box-shadow: 13px 13px rgba(0, 0, 0, 0.16);
+  box-shadow: 13px 13px rgba(0, 0, 0, 0.16);
+}
+
+.screen-inner {
+  width: 590px;
+  height: 330px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: black;
+  overflow: hidden;
+}
+
+.screen-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+}
+
+.screen-content:after {
+  width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+  background: white;
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+
+.tv._off .screen-content {
+  -webkit-animation: shutdown 400ms linear;
+  animation: shutdown 400ms linear;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.tv._off .screen-content:after {
+  -webkit-animation: shutdown-opa 400ms linear;
+  animation: shutdown-opa 400ms linear;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.tv-panel {
+  height: 40px;
+  width: 100%;
+  background: #343434;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.tv-panel__indicators {
+  position: absolute;
+  left: 6px;
+  bottom: 5px;
+  font-size: 0;
+}
+
+.tv-panel__indicators SPAN {
+  background: #fa4c4c;
+  width: 3px;
+  height: 3px;
+  margin: 0 4px 0 0;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-transition: background 150ms ease;
+  transition: background 150ms ease;
+}
+
+.tv._off .tv-panel__indicators SPAN { background: #8f8875; }
+
+.tv-panel__buttons {
+  position: absolute;
+  left: 50%;
+  margin: 0 0 0 -32px;
+  bottom: 16px;
+  font-size: 0;
+}
+
+.tv-panel__buttons SPAN {
+  background: #222222;
+  width: 14px;
+  height: 7px;
+  margin: 0 3px 0 0;
+  display: inline-block;
+  -webkit-transition: background 150ms ease;
+  transition: background 150ms ease;
+}
+ @-webkit-keyframes 
+shutdown {  0% {
+ -webkit-transform: scale3d(1, 1, 1);
+ transform: scale3d(1, 1, 1);
+}
+ 20% {
+ -webkit-transform: scale3d(1, 1.6, 1);
+ transform: scale3d(1, 1.6, 1);
+}
+ 50% {
+ -webkit-transform: scale3d(1, 0.005, 1);
+ transform: scale3d(1, 0.005, 1);
+}
+ 100% {
+ -webkit-transform: scale3d(0, 0, 1);
+ transform: scale3d(0, 0, 1);
+}
+}
+ @keyframes 
+shutdown {  0% {
+ -webkit-transform: scale3d(1, 1, 1);
+ transform: scale3d(1, 1, 1);
+}
+ 20% {
+ -webkit-transform: scale3d(1, 1.6, 1);
+ transform: scale3d(1, 1.6, 1);
+}
+ 50% {
+ -webkit-transform: scale3d(1, 0.005, 1);
+ transform: scale3d(1, 0.005, 1);
+}
+ 100% {
+ -webkit-transform: scale3d(0, 0, 1);
+ transform: scale3d(0, 0, 1);
+}
+}
+@-webkit-keyframes 
+shutdown-opa {  0% {
+ opacity: 0;
+}
+ 50% {
+ opacity: 1;
+}
+ 100% {
+ opacity: 1;
+}
+}
+@keyframes 
+shutdown-opa {  0% {
+ opacity: 0;
+}
+ 50% {
+ opacity: 1;
+}
+ 100% {
+ opacity: 1;
+}
+}
+h2
+{
+  position: static;
+  /*display: inline-block;*/
+  padding: 15px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  text-decoration: none;
+  font-size: 35px;
+  overflow: visible;
+  transition: 0.5s;
+  left: 0%;
+  display: block;
+  /*width: 96px;*/
+  float: center;
+  /*margin-left: /*35%*//*none;*/
+ /* margin-right: none;*/
+top: 5%;
+}
+h2:hover
+{
+  color: #ae00b4;
+  background-color: #f700ff;
+  box-shadow:  0 0 10px #fc1f4f, 0 0 400px #fc1f4f, 0 0 80px #fc1f4f;
+  cursor: pointer; 
+}
+#exit{
+  display: none; 
+  top: 90%;
+  position: center; 
+  float: center; 
+  margin-bottom: 0%;
+  
+}
+#headlol {
+        /* bottom: 50%;  */  
+             }
+footer{
+             color: purple;
+             }
+            
+             .fo0ter {
+               top: 90%; 
+               border-radius: 8px; 
+               font-size: 10px; 
+               height: 80px; 
+               text-align: center; 
+               display: block; 
+               color: red; 
+               margin-top: 2px; 
+  }
+  /*##################################*/       
+  /* animation: cursorAnim .5s infinite alternate;*/
+    .cursor {
+        width: 20px;
+        height: 20px;
+        border: 1px solid purple;
+        border-radius: 50%;
+        position: absolute;
+        transition-duration: 200ms;
+        transition-timing-function: ease-out;
+        pointer-events: none;
+      }
+  
+  /*##################################*/
+
+      .cursor::after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        border: 8px solid purple;
+        border-radius: 50%;
+        opacity: .5;
+        top: -8px;
+        left: -8px;
+        /*animation: cursorAnim2 .5s infinite alternate;*/
+      }
+   @keyframes cursorAnim {
+        from {
+          transform: scale(1);
+        }
+
+        to {
+          transform: scale(.7);
+        }
+      }
+
+      @keyframes cursorAnim2 {
+       from {
+          transform: scale(1);
+        }
+
+        to {
+          transform: scale(.4);
+        }
+      }
+      @keyframes cursorAnim3 {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(3);
+
+        }
+
+        100% {
+          transform: scale(1);
+          opacity: 0;
+
+        }
+      }
+
+      .expand {
+        animation: cursorAnim3 .5s forwards;
+        border: 1px solid cyan;
+        background-color: cyan;
+      }
+  
+  #o {
+    
+  }
+  #container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+   #a{
+  color: white;
+    font-family: 'Press Start 2P';
+    font-size: 16px;
+  text-shadow: red;
+}
+             </style>
 </head> 
 
 <body> 
+  <!--<div id="container"></div>-->
+  <!--<div class="cursor"></div>-->
+      <script src="/sparkle.min.js"></script>
+  <script>
+   /* const cursor = document.querySelector('.cursor');
 
-  <ul>
-    <li><a href='v1.straight.html'>Version 1 - Straight</a></li>
-    <li><a href='v2.curves.html'>Version 2 - Curves</a></li>
-    <li><a href='v3.hills.html'>Version 3 - Hills</a></li>
-    <li><a href='v4.final.html'>Version 4 - Final</a></li>
-  </ul>
+    document.addEventListener('mousemove', e => {
+      cursor.setAttribute("style", "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;")
+    })
 
+    document.addEventListener('click', () => {
+      cursor.classList.add("expand");
+
+      setTimeout(() => {
+        cursor.classList.remove("expand");
+      }, 500)
+    })
+    */
+
+  </script>
+  <center>
+    <img src="lambo.png" style="top: 0%; "></img>
+  </center>
+<center>
+  <h1 class="neon" id="headlol" data-text="Javascript-Racer">
+<img src="palmtreeoutline.png" style="width: 90px; margin-right: 9px; "></img> 
+  JAVASCRIPT-RACER 
+  <img src="palmtreeoutline.png" style="width: 90px; margin-right: 9px; "></img>
+  </h1>
+
+  </center>
+<center>⁣</center>
+<center>⁣</center>
+  <center>
+    <a href='v1.straight.html' id="o">Version 1 - Straight</a>
+  </center>
+  <center>⁣</center>
+
+  <center>
+    <a href='v2.curves.html' id="o">Version 2 - Curves</a>
+  </center>
+  <center>⁣</center>
+
+  <center>
+    <a href='v3.hills.html' id="o">Version 3 - Hills</a>
+  </center>
+  <center>⁣</center>
+
+  <center>
+    <a href='v4.final.html' id="o">Version 4 - Final (fastest lap gamemode)</a>
+  </center>
+  <center>⁣</center>
+
+  
+<center>⁣</center>
+                               <center>
+                  <div class="fo0ter">
+                    <center>
+                      <a href="og/index.html">Click Here To Go To The Original Version!</a>
+                    </center>
+                    Styling Done By Oliver Paredes, and JavaScript done by lrq3000 on github
+                                 </div>
+                                          </center>
 </body> 
 </html>
