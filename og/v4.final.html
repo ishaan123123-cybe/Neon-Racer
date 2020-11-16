@@ -4,20 +4,22 @@
 <head>
   <title>Javascript Racer - v4 (final)</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <link href="common.css" rel="stylesheet" type="text/css" />
+  <link href="ogcommon.css" rel="stylesheet" type="text/css" />
 </head> 
 
 <body> 
+<center>
+ |<a href='v1.straight.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px cyan; ">straight</a> |
+        <a href='v2.curves.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px cyan; ">curves</a>   |  
+        <a href='v3.hills.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px cyan; ">hills</a>    |   
+        <a href='v4.final.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px cyan; ">fastest lap</a>   |    
+        
 
+  </center>
+  <center><a href='/Neon-Racer/' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px cyan; ">Home</a></center>
+  <center>  <span id="mute"></span></center>
   <table id="controls">
-    <tr>
-      <td colspan="2">
-        <a href='v1.straight.html'>straight</a> |
-        <a href='v2.curves.html'>curves</a>     |
-        <a href='v3.hills.html'>hills</a>       |
-        <a href='v4.final.html'>final</a>
-      </td>
-    </tr>
+    
     <tr><td id="fps" colspan="2" align="right"></td></tr>
     <tr>
       <th><label for="resolution">Resolution :</label></th>
@@ -65,6 +67,7 @@
 
   <div id='instructions'>
     <p>Use the <b>arrow keys</b> to drive the car.</p>
+    <p><b><a href="/Neon-Racer/v4.final.html">Click Here</a></b> to go to the neon version</p>
   </div>
 
   <div id="racer">
@@ -84,7 +87,6 @@
     <source src="music/racer.ogg">
     <source src="music/racer.mp3">
   </audio>
-  <span id="mute"></span>
 
   <script src="stats.js"></script>
   <script src="common.js"></script>
