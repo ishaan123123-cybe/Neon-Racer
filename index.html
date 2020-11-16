@@ -263,19 +263,33 @@ footer{
    /*left: 75%;*/
    right: 0;
    transition: 0.2s; 
-   left: 50%;
-   margin-left:-??px;
+   left: 75%;
   }
   .foreward:hover{
     font-size: 20px;
   }
   #cursorfish  {
-    width: 
+    width: 5%;
+    border-radius: 50%;
+    display: none;
+    border: 1px solid purple;
+  }
+  .click {
+    animation-name: click;
+    animation-duration: 0.5s;
+  }
+  @keyframes click {
+    0%{display: visible; width: 5%; opacity: 1;}
+    25%{display: visible; width: 10%; opacity: 0.75;}
+    50%{display: visible; width: 15%; opacity: 0.5;}
+    75%{display: visible; width: 15%; opacity: 0.25;}
+    100%{display: none; width: 5%; opacity: 1;}
   }
              </style>
 </head> 
 
 <body> 
+  <div id="cursorfish"></div>
   <!--<div id="container"></div>-->
   <!--<div class="cursor"></div>-->
       <script src="sparkle.min.js"></script>
@@ -294,9 +308,22 @@ footer{
       }, 500)
     })
     */
+ const cursor = document.getElementById('cursorfish');
 
+    document.addEventListener('mousemove', e => {
+      cursor.setAttribute("style", "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;")
+    })
+
+    document.addEventListener('click', () => {
+      cursor.classList.add("click");
+
+      setTimeout(() => {
+        cursor.classList.remove("click");
+      }, 500)
+    })
+    */
   </script>
-  <a class="foreward" href="og/" style="position: absolute; top: 0%; font-size: 16px; right: 0; eft: 50%; margin-left:-??px; ">
+  <a class="foreward" href="og/" style="position: absolute; top: 0%; font-size: 16px; right: 0%;">
     OG VERSION
   </a>
   <center>
