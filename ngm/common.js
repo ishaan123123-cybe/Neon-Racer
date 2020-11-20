@@ -356,7 +356,7 @@ var KEY = {
 var COLORS = {
   SKY:  '#72D7EE',
   TREE: '#005108',
-  FOG:  '#70ffdb',
+  FOG:  '#CCCCCC',
   LIGHT:  { road: '#6B6B6B', grass: '#FCEB95', rumble: '#ff0000', lane: '#CCCCCC'  },//rumble light alternative: #ff00f2
   DARK:   { road: '#696969', grass: '#FCEB95', rumble: '#BBBBBB'                   },
   START:  { road: 'white',   grass: 'white',   rumble: 'white'                     },
