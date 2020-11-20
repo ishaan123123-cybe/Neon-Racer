@@ -121,7 +121,7 @@
     var drawDistance   = 300;                     // number of segments to draw
     var playerX        = 0;                       // player x offset from center of road (-1 to 1 to stay independent of roadWidth)
     var playerZ        = null;                    // player relative z distance from camera (computed)
-    var fogDensity     = 5;                       // exponential fog density
+    var fogDensity     = 0;                       // exponential fog density
     var position       = 0;                       // current camera Z position (add playerZ to get player's absolute Z position)
     var speed          = 0;                       // current speed
     var maxSpeed       = segmentLength/step;      // top speed (ensure we can't move more than 1 segment in a single frame to make collision detection easier)
