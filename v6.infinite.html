@@ -3,10 +3,9 @@
 <head>
   <title>Neon Racer - v6 (Infinite Drive)</title>
   <meta charset="utf-8" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="icon" href="images/neonracericon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/neonracericon.png" />
   <style>
-    /* Make body and html fill whole page */
     html, body {
       margin: 0; padding: 0; height: 100%; overflow: hidden;
       background: black;
@@ -14,23 +13,18 @@
       color: white;
       user-select: none;
     }
-
-    /* Canvas fills entire viewport */
     #canvas {
-      display: block;
       position: fixed;
       top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100vw; height: 100vh;
+      display: block;
       background: black;
       z-index: 0;
     }
-
-    /* Controls panel hidden by default */
     #controls {
       position: fixed;
       top: 20px; right: 20px;
-      background: rgba(20, 20, 20, 0.85);
+      background: rgba(20,20,20,0.85);
       border-radius: 10px;
       padding: 15px 20px;
       color: white;
@@ -40,7 +34,6 @@
       box-shadow: 0 0 15px #f700ff;
       z-index: 10;
     }
-
     #controls th, #controls td {
       padding: 4px 8px;
     }
@@ -59,8 +52,6 @@
       font-size: 9px;
       border-radius: 5px;
     }
-
-    /* Instructions fixed bottom center */
     #instructions {
       position: fixed;
       bottom: 20px;
@@ -72,19 +63,15 @@
       z-index: 9;
       user-select: none;
     }
-
-    /* HUD styling */
     #hud {
       position: fixed;
-      top: 10px;
-      left: 10px;
+      top: 10px; left: 10px;
       color: #f700ff;
       font-size: 11px;
       text-shadow: 0 0 6px #f700ff;
       user-select: none;
       z-index: 10;
     }
-
     .hud {
       margin-right: 12px;
       font-weight: bold;
@@ -153,17 +140,17 @@
   </table>
 
   <div id='instructions'>
-    Use <b>arrow keys</b> to drive. Double-click for fullscreen. Press CONTROL for NITRO BOOST.  
+    Use <b>arrow keys</b> to drive. Double-click for fullscreen. Press CONTROL for NITRO BOOST.<br />
     Press <b>Ctrl+V</b> to toggle options.
   </div>
 
   <script>
-    // Get DOM Elements
+    // DOM elements
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const controls = document.getElementById('controls');
 
-    // Set full window canvas size
+    // Resize canvas full window
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -171,8 +158,8 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Options toggle with Ctrl+V
-    window.addEventListener('keydown', (e) => {
+    // Toggle options on Ctrl+V
+    window.addEventListener('keydown', e => {
       if (e.ctrlKey && (e.key === 'v' || e.key === 'V')) {
         e.preventDefault();
         if (controls.style.display === 'block') {
@@ -183,40 +170,51 @@
       }
     });
 
-    // Example game rendering loop to avoid blank canvas
+    // Your actual game render logic here:
     function gameLoop() {
-      // Clear screen
+      // Clear canvas each frame
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw some neon glowing text as a placeholder
-      ctx.fillStyle = 'black';
+      // === YOUR GAME RENDERING CODE BELOW ===
+      // Example: draw your actual game here instead of placeholder
+
+      // For demo, let's draw a simple "road" and "car" as placeholders
+      // Replace this with your real game rendering
+
+      // Draw road background
+      ctx.fillStyle = '#222';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.font = "50px 'Press Start 2P'";
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      // Draw lanes
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 3;
+      let laneCount = 3;
+      for (let i = 1; i < laneCount; i++) {
+        let x = (canvas.width / laneCount) * i;
+        ctx.setLineDash([20, 20]);
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      ctx.setLineDash([]);
 
-      // Neon glow effect
-      ctx.shadowColor = '#f700ff';
-      ctx.shadowBlur = 20;
+      // Draw player car (simple rectangle)
       ctx.fillStyle = '#f700ff';
-      ctx.fillText('Neon Racer v6', canvas.width / 2, canvas.height / 2 - 30);
+      let carWidth = 60;
+      let carHeight = 120;
+      let carX = canvas.width / 2 - carWidth / 2;
+      let carY = canvas.height - carHeight - 30;
+      ctx.fillRect(carX, carY, carWidth, carHeight);
 
-      ctx.shadowColor = '#00fff7';
-      ctx.shadowBlur = 15;
-      ctx.fillStyle = '#00fff7';
-      ctx.fillText('Infinite Drive', canvas.width / 2, canvas.height / 2 + 30);
+      // === END OF YOUR GAME RENDERING CODE ===
 
-      // Reset shadowBlur for next frame
-      ctx.shadowBlur = 0;
-
-      // Next frame
+      // Loop next frame
       requestAnimationFrame(gameLoop);
     }
 
-    // Start the game loop
+    // Start game loop
     gameLoop();
-
   </script>
 
 </body>
