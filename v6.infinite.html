@@ -1,25 +1,21 @@
-<!DOCTYPE html> 
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8" />
   <title>Neon Racer - v6 (Infinite Drive)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <link rel="icon" href="images/neonracericon.png" />
-  
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/neonracericon.png"/>
   <style>
-    /* Reset & basic full page */
+    /* Make body and html fill whole page */
     html, body {
-      margin: 0; 
-      padding: 0; 
-      height: 100%; 
-      overflow: hidden; 
-      background: #000000;
+      margin: 0; padding: 0; height: 100%; overflow: hidden;
+      background: black;
       font-family: 'Press Start 2P', cursive;
-      color: #f700ff;
+      color: white;
       user-select: none;
     }
-    
-    /* Full screen canvas */
+
+    /* Canvas fills entire viewport */
     #canvas {
       display: block;
       position: fixed;
@@ -32,177 +28,196 @@
 
     /* Controls panel hidden by default */
     #controls {
-      display: none;
       position: fixed;
-      top: 8%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(30, 0, 50, 0.95);
-      border: 2px solid #f700ff;
-      border-radius: 15px;
-      padding: 20px 30px;
+      top: 20px; right: 20px;
+      background: rgba(20, 20, 20, 0.85);
+      border-radius: 10px;
+      padding: 15px 20px;
+      color: white;
+      font-size: 10px;
+      width: 280px;
+      display: none;
+      box-shadow: 0 0 15px #f700ff;
       z-index: 10;
-      max-width: 400px;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: 0 0 20px #f700ff;
     }
 
-    /* Table style */
-    #controls table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 15px;
-    }
     #controls th, #controls td {
-      padding: 5px 10px;
-      vertical-align: middle;
-    }
-    #controls th {
-      text-align: left;
-      color: #ff9aff;
-      font-size: 0.7rem;
-      white-space: nowrap;
-    }
-    #controls td {
-      text-align: right;
-    }
-
-    /* Select & input styles */
-    #controls select, 
-    #controls input[type=range] {
-      width: 100%;
-      background: #2e0040;
-      border: 1.5px solid #f700ff;
-      border-radius: 8px;
-      color: #f700ff;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.7rem;
       padding: 4px 8px;
-      box-shadow: inset 0 0 10px #f700ff;
-      cursor: pointer;
-      -webkit-appearance: none;
-      appearance: none;
     }
-    #controls input[type=range] {
-      -webkit-appearance: none;
-      height: 8px;
-      margin: 6px 0;
+    #controls label {
+      font-weight: bold;
+      text-shadow: 0 0 5px #f700ff;
     }
-    #controls input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      background: #f700ff;
-      cursor: pointer;
-      border-radius: 50%;
-      box-shadow: 0 0 6px #ff00ff;
-      border: none;
-      margin-top: -4px;
-      transition: background 0.3s ease;
-    }
-    #controls input[type=range]:hover::-webkit-slider-thumb {
-      background: #ff33ff;
-      box-shadow: 0 0 12px #ff33ff;
+    #controls select, #controls input[type=range] {
+      width: 100%;
+      margin-top: 3px;
+      margin-bottom: 8px;
+      background: #111;
+      border: 1px solid #f700ff;
+      color: white;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      border-radius: 5px;
     }
 
-    /* Label and span styling */
-    #controls label {
-      cursor: pointer;
-      font-size: 0.75rem;
+    /* Instructions fixed bottom center */
+    #instructions {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #f700ff;
+      font-size: 10px;
+      text-shadow: 0 0 8px #f700ff;
+      z-index: 9;
+      user-select: none;
     }
-    #controls span.value {
-      color: #ff5aff;
+
+    /* HUD styling */
+    #hud {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      color: #f700ff;
+      font-size: 11px;
+      text-shadow: 0 0 6px #f700ff;
+      user-select: none;
+      z-index: 10;
+    }
+
+    .hud {
+      margin-right: 12px;
       font-weight: bold;
-      font-size: 0.75rem;
-      user-select: text;
+    }
+    .value {
+      font-weight: normal;
+      color: #ffffffaa;
     }
   </style>
-</head> 
+</head>
+<body>
 
-<body> 
+  <canvas id="canvas">Your browser does not support canvas</canvas>
 
-  <!-- Game Canvas -->
-  <canvas id="canvas" >
-    Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element.
-  </canvas>
-
-  <!-- Controls (Options) -->
-  <div id="controls">
-    <table>
-      <tr>
-        <th><label for="resolution">Resolution :</label></th>
-        <td>
-          <select id="resolution">
-            <option value='fine'>Fine (1280x960)</option>
-            <option selected value='high'>High (1024x768)</option>
-            <option value='medium'>Medium (640x480)</option>
-            <option value='low'>Low (480x360)</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <th><label for="lanes">Lanes :</label></th>
-        <td>
-          <select id="lanes">
-            <option>1</option>
-            <option>2</option>
-            <option selected>3</option>
-            <option>4</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <th><label for="roadWidth">Road Width (<span id="currentRoadWidth" class="value"></span>) :</label></th>
-        <td><input id="roadWidth" type='range' min='500' max='3000' title="integer (500-3000)"></td>
-      </tr>
-      <tr>
-        <th><label for="cameraHeight">Camera Height (<span id="currentCameraHeight" class="value"></span>) :</label></th>
-        <td><input id="cameraHeight" type='range' min='500' max='5000' title="integer (500-5000)"></td>
-      </tr>
-      <tr>
-        <th><label for="drawDistance">Draw Distance (<span id="currentDrawDistance" class="value"></span>) :</label></th>
-        <td><input id="drawDistance" type='range' min='100' max='500' title="integer (100-500)"></td>
-      </tr>
-      <tr>
-        <th><label for="fieldOfView">Field of View (<span id="currentFieldOfView" class="value"></span>) :</label></th>
-        <td><input id="fieldOfView" type='range' min='80' max='140' title="integer (80-140)"></td>
-      </tr>
-      <tr>
-        <th><label for="fogDensity">Fog Density (<span id="currentFogDensity" class="value"></span>) :</label></th>
-        <td><input id="fogDensity" type='range' min='0' max='50' title="integer (0-50)"></td>
-      </tr>
-    </table>
+  <div id="hud">
+    <span class="hud">Speed: <span id="speed_value" class="value">0</span> mph</span>
+    <span class="hud">Time: <span id="current_lap_time_value" class="value">0.0</span></span>
+    <span class="hud">Nitro Boosts: <span id="turbo_left_value" class="value">0</span></span>
+    <span class="hud">Last Lap: <span id="last_lap_time_value" class="value">0.0</span></span>
+    <span class="hud">Fastest Lap: <span id="fast_lap_time_value" class="value">0.0</span></span>
   </div>
 
-  <audio id='music'>
-    <source src="music/jsracer_soundtrack.ogg">
-    <source src="music/lsracer_soundtrack.mp3">
-  </audio>
+  <table id="controls">
+    <tr>
+      <th><label for="resolution">Resolution :</label></th>
+      <td>
+        <select id="resolution">
+          <option value='fine'>Fine (1280x960)</option>
+          <option selected value='high'>High (1024x768)</option>
+          <option value='medium'>Medium (640x480)</option>
+          <option value='low'>Low (480x360)</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="lanes">Lanes :</label></th>
+      <td>
+        <select id="lanes">
+          <option>1</option>
+          <option>2</option>
+          <option selected>3</option>
+          <option>4</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th><label for="roadWidth">Road Width (<span id="currentRoadWidth"></span>) :</label></th>
+      <td><input id="roadWidth" type='range' min='500' max='3000'></td>
+    </tr>
+    <tr>
+      <th><label for="cameraHeight">CameraHeight (<span id="currentCameraHeight"></span>) :</label></th>
+      <td><input id="cameraHeight" type='range' min='500' max='5000'></td>
+    </tr>
+    <tr>
+      <th><label for="drawDistance">Draw Distance (<span id="currentDrawDistance"></span>) :</label></th>
+      <td><input id="drawDistance" type='range' min='100' max='500'></td>
+    </tr>
+    <tr>
+      <th><label for="fieldOfView">Field of View (<span id="currentFieldOfView"></span>) :</label></th>
+      <td><input id="fieldOfView" type='range' min='80' max='140'></td>
+    </tr>
+    <tr>
+      <th><label for="fogDensity">Fog Density (<span id="currentFogDensity"></span>) :</label></th>
+      <td><input id="fogDensity" type='range' min='0' max='50'></td>
+    </tr>
+  </table>
 
-  <script src="sparkle.min.js"></script>
-  <script src="stats.js"></script>
-  <script src="common.js"></script>
-  <script src="infinite.js"></script>
+  <div id='instructions'>
+    Use <b>arrow keys</b> to drive. Double-click for fullscreen. Press CONTROL for NITRO BOOST.  
+    Press <b>Ctrl+V</b> to toggle options.
+  </div>
 
   <script>
-    // Show/hide options panel on Ctrl+V
-    document.addEventListener('keydown', function(event) {
-      if (event.ctrlKey && event.key.toLowerCase() === 'v') {
-        event.preventDefault();
-        const controls = document.getElementById('controls');
-        if (controls.style.display === 'none' || controls.style.display === '') {
-          controls.style.display = 'block';
-        } else {
+    // Get DOM Elements
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const controls = document.getElementById('controls');
+
+    // Set full window canvas size
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Options toggle with Ctrl+V
+    window.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && (e.key === 'v' || e.key === 'V')) {
+        e.preventDefault();
+        if (controls.style.display === 'block') {
           controls.style.display = 'none';
+        } else {
+          controls.style.display = 'block';
         }
       }
     });
 
-    // Initialize game as before
-    racer(1);
+    // Example game rendering loop to avoid blank canvas
+    function gameLoop() {
+      // Clear screen
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw some neon glowing text as a placeholder
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = "50px 'Press Start 2P'";
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // Neon glow effect
+      ctx.shadowColor = '#f700ff';
+      ctx.shadowBlur = 20;
+      ctx.fillStyle = '#f700ff';
+      ctx.fillText('Neon Racer v6', canvas.width / 2, canvas.height / 2 - 30);
+
+      ctx.shadowColor = '#00fff7';
+      ctx.shadowBlur = 15;
+      ctx.fillStyle = '#00fff7';
+      ctx.fillText('Infinite Drive', canvas.width / 2, canvas.height / 2 + 30);
+
+      // Reset shadowBlur for next frame
+      ctx.shadowBlur = 0;
+
+      // Next frame
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Start the game loop
+    gameLoop();
+
   </script>
 
-</body> 
+</body>
 </html>
