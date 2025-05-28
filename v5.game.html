@@ -13,16 +13,6 @@
 <body> 
         <script src="sparkle.min.js"></script>
 
- <center>
- |<a href='v1.straight.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">straight</a> |
-        <a href='v2.curves.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">curves</a>   |  
-        <a href='v3.hills.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">hills</a>    |   
-        <a href='v4.final.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">fastest lap</a>   |    
-        <a href='v5.game.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">out of time</a>|
-                <a href='v6.infinite.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">Infinite</a>|
-
-  </center>
-  <center><a href='index.html' style="font-family:'Press Start 2P'; color: white; text-shadow: 0 0 20px #f700ff; ">Home</a></center>
   <center>
         <span id="mute"></span>  
   </center>
@@ -117,6 +107,19 @@
   <script>
     racer(1); // initiate the game
   </script>
+  <script>
+
+  canvas.addEventListener('dblclick', () => {
+    if (canvas.requestFullscreen) {
+      canvas.requestFullscreen();
+    } else if (canvas.webkitRequestFullscreen) { // Safari
+      canvas.webkitRequestFullscreen();
+    } else if (canvas.msRequestFullscreen) { // IE11
+      canvas.msRequestFullscreen();
+    }
+  });
+</script>
+
 
 </body> 
 </html>
